@@ -10,8 +10,9 @@ import {
   Globe,
   Smartphone,
   Terminal,
-
 } from "lucide-react";
+
+import LegalModal, { type LegalTab } from "./components/LegalModal";
 
 function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -54,6 +55,7 @@ const PROYECTOS = [
 export default function App() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [legalTab, setLegalTab] = useState<LegalTab>(null);
 
   const handleContact = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -389,6 +391,21 @@ export default function App() {
                 />
               </div>
 
+              <label className="flex items-start gap-2 text-xs text-slate-400 cursor-pointer">
+                <input type="checkbox" required className="mt-0.5 accent-amber-400" />
+                <span>
+                  He leído y acepto la{" "}
+                  <button
+                    type="button"
+                    onClick={() => setLegalTab("privacidad")}
+                    className="text-sky-400 underline hover:text-sky-300 cursor-pointer"
+                  >
+                    Política de Privacidad
+                  </button>{" "}
+                  para el envío de esta consulta.
+                </span>
+              </label>
+
               <button
                 type="submit"
                 disabled={sending}
@@ -406,8 +423,26 @@ export default function App() {
         <p className="font-semibold text-slate-300">
           DonseCanarias · Abdón Senén Meléndez Díaz · Tenerife, Islas Canarias
         </p>
+        <div className="flex flex-wrap justify-center gap-4 mt-2">
+          <button type="button" onClick={() => setLegalTab("aviso")} className="hover:text-amber-400 underline transition cursor-pointer">
+            Aviso Legal
+          </button>
+          <button type="button" onClick={() => setLegalTab("privacidad")} className="hover:text-amber-400 underline transition cursor-pointer">
+            Política de Privacidad
+          </button>
+          <button type="button" onClick={() => setLegalTab("cookies")} className="hover:text-amber-400 underline transition cursor-pointer">
+            Política de Cookies
+          </button>
+        </div>
         <p className="mt-1">donsecanarias@gmail.com · © {new Date().getFullYear()}</p>
       </footer>
+
+      <LegalModal
+        activeTab={legalTab}
+        onClose={() => setLegalTab(null)}
+        onChangeTab={setLegalTab}
+        siteName="DonseCanarias"
+      />
     </div>
   );
 }
