@@ -2,7 +2,7 @@
 
 Perfil profesional público de Abdón Senen Melendez Díaz, estudiante de Ingeniería Informática en la Universidad de La Laguna y creador independiente en **Tenerife, Islas Canarias**.
 
-Abdón tiene 22 años y desarrolla proyectos personales relacionados con la informática, los videojuegos y la creatividad. Actualmente no cuenta con experiencia comercial: este portfolio presenta su formación, su stack y sus proyectos propios bajo la marca **Donse Canarias**.
+Tengo 22 años y desarrollo proyectos personales relacionados con la informática, los videojuegos y la creatividad. Actualmente no cuento con experiencia comercial: este portfolio presenta mi formación, mi stack y mis proyectos propios bajo la marca **Donse Canarias**.
 
 ## Proyectos Destacados
 
