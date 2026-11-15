@@ -1,15 +1,19 @@
 import { useState } from "react";
 import {
   MapPin,
-  Code2,
   ArrowUpRight,
   Mail,
   CheckCircle2,
-  Sparkles,
   Smartphone,
   Globe,
   Terminal,
+  ExternalLink,
+  GraduationCap,
+  UserRound,
+  BriefcaseBusiness,
 } from "lucide-react";
+
+const CURRENT_YEAR = new Date().getFullYear();
 
 const PROYECTOS = [
   {
@@ -19,6 +23,7 @@ const PROYECTOS = [
       "Mapa interactivo con más de 265 puntos de iluminación navideña, belenes y mercadillos en 241 municipios de toda España. Incluye geolocalización inteligente, filtros multicapa y alertas de calendario.",
     tags: ["React", "TypeScript", "Leaflet", "Cloudflare Pages"],
     destacado: "265+ ubicaciones en España",
+    enlace: "https://github.com/alu0101539669/NavidadEnMapa",
   },
   {
     titulo: "Golifiar",
@@ -27,6 +32,7 @@ const PROYECTOS = [
       "Suite de analítica privada 100% client-side para analizar exportaciones de Instagram, TikTok, Spotify y WhatsApp directamente en el dispositivo del usuario, sin subir datos a servidores externos.",
     tags: ["React", "Tailwind CSS", "Capacitor", "Privacidad Local"],
     destacado: "Procesamiento 100% local",
+    enlace: "https://github.com/alu0101539669",
   },
   {
     titulo: "Radar & Méteo Canarias",
@@ -41,10 +47,12 @@ const PROYECTOS = [
 export default function App() {
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
+  const [sendError, setSendError] = useState(false);
 
   const handleContact = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
+    setSendError(false);
     const fd = new FormData(e.currentTarget);
 
     try {
@@ -64,7 +72,11 @@ export default function App() {
       if (res.ok) {
         setSent(true);
         e.currentTarget.reset();
+      } else {
+        setSendError(true);
       }
+    } catch {
+      setSendError(true);
     } finally {
       setSending(false);
     }
@@ -75,7 +87,7 @@ export default function App() {
       {/* Barra superior */}
       <header className="sticky top-0 z-50 backdrop-blur-md bg-[#0B192C]/85 border-b border-slate-800/80">
         <div className="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="#" className="flex items-center gap-2.5 font-bold text-lg tracking-tight">
+          <a href="#" className="flex items-center gap-2.5 font-bold text-lg tracking-tight" aria-label="Inicio">
             <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-amber-400 to-sky-500 flex items-center justify-center text-slate-950 font-black">
               D
             </span>
@@ -90,6 +102,17 @@ export default function App() {
             <a href="#que-hago" className="hidden sm:inline hover:text-white transition">
               Qué hago
             </a>
+            <a href="#sobre-mi" className="hidden sm:inline hover:text-white transition">
+              Sobre mí
+            </a>
+            <a
+              href="https://github.com/alu0101539669"
+              target="_blank"
+              rel="noreferrer"
+              className="hidden sm:inline hover:text-white transition"
+            >
+              GitHub
+            </a>
             <a
               href="#contacto"
               className="px-4 py-2 rounded-xl bg-amber-400 text-slate-950 font-semibold hover:bg-amber-300 transition"
@@ -103,11 +126,11 @@ export default function App() {
       {/* Hero Personal */}
       <section className="max-w-5xl mx-auto px-4 pt-16 pb-14">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 text-xs font-semibold mb-6">
-          <MapPin className="w-3.5 h-3.5" /> Tenerife, Islas Canarias · Marca Propia & Dev Lab
+          <MapPin className="w-3.5 h-3.5" /> Tenerife, Islas Canarias · Estudiante de Ingeniería Informática
         </div>
 
         <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] max-w-3xl">
-          Construyo aplicaciones web y{" "}
+          Creo aplicaciones web y{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-amber-300 to-sky-400">
             productos digitales
           </span>{" "}
@@ -115,7 +138,10 @@ export default function App() {
         </h1>
 
         <p className="mt-6 text-slate-300 text-base md:text-lg max-w-2xl leading-relaxed">
-          Soy desarrollador de software en Canarias. Bajo <strong>DonseCanarias</strong> diseño, programo y lanzo herramientas interactivas para miles de usuarios, además de crear webs y apps a medida para proyectos y negocios locales.
+          Soy Abdón Senen Melendez Díaz, estudiante de Ingeniería Informática en la
+          Universidad de La Laguna. Bajo la marca <strong>Donse Canarias</strong> desarrollo
+          proyectos personales para aprender, experimentar y convertir ideas creativas en
+          experiencias digitales útiles.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
@@ -131,6 +157,56 @@ export default function App() {
           >
             <Mail className="w-4 h-4 text-sky-400" /> Proponer una idea o proyecto
           </a>
+        </div>
+      </section>
+
+      {/* Perfil */}
+      <section id="sobre-mi" className="max-w-5xl mx-auto px-4 py-12 border-t border-slate-800/80">
+        <div className="flex flex-col md:flex-row gap-8 items-start">
+          <div className="shrink-0 flex flex-col items-center gap-3">
+            <img
+              src="https://github.com/alu0101539669.png"
+              alt="Abdón Senen Melendez Díaz"
+              className="w-28 h-28 rounded-3xl border-2 border-amber-400/50 object-cover"
+            />
+            <a
+              href="https://github.com/alu0101539669"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs text-sky-400 hover:text-sky-300"
+            >
+              Ver GitHub <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+          <div className="flex-1">
+            <p className="text-xs font-bold uppercase tracking-wider text-amber-400">Sobre mí</p>
+            <h2 className="text-2xl md:text-3xl font-bold mt-1">Estudiante, creativo y desarrollador en formación</h2>
+            <p className="text-slate-300 leading-relaxed mt-4">
+              Tengo 22 años y me interesan la informática, los videojuegos y la creatividad.
+              Actualmente estoy centrado en mi carrera y en construir proyectos propios que me
+              permitan seguir creciendo como profesional.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-6">
+              <div className="rounded-xl bg-slate-900/70 border border-slate-800 p-4">
+                <GraduationCap className="w-5 h-5 text-amber-400 mb-2" />
+                <p className="text-xs text-slate-400">Formación actual</p>
+                <p className="text-sm font-semibold mt-1">Ingeniería Informática</p>
+                <p className="text-xs text-slate-400 mt-1">Universidad de La Laguna</p>
+              </div>
+              <div className="rounded-xl bg-slate-900/70 border border-slate-800 p-4">
+                <UserRound className="w-5 h-5 text-sky-400 mb-2" />
+                <p className="text-xs text-slate-400">Perfil</p>
+                <p className="text-sm font-semibold mt-1">Creador independiente</p>
+                <p className="text-xs text-slate-400 mt-1">Donse Canarias</p>
+              </div>
+              <div className="rounded-xl bg-slate-900/70 border border-slate-800 p-4">
+                <BriefcaseBusiness className="w-5 h-5 text-emerald-400 mb-2" />
+                <p className="text-xs text-slate-400">Experiencia</p>
+                <p className="text-sm font-semibold mt-1">Proyectos personales</p>
+                <p className="text-xs text-slate-400 mt-1">Sin experiencia comercial todavía</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -159,6 +235,14 @@ export default function App() {
                 </div>
                 <h3 className="text-xl font-bold text-white mb-2">{proy.titulo}</h3>
                 <p className="text-sm text-slate-300 leading-relaxed mb-4">{proy.descripcion}</p>
+                <a
+                  href={proy.enlace}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs text-sky-400 hover:text-sky-300"
+                >
+                  Ver proyecto <ExternalLink className="w-3 h-3" />
+                </a>
               </div>
 
               <div className="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800">
@@ -186,7 +270,7 @@ export default function App() {
             <Globe className="w-6 h-6 text-amber-400 mb-3" />
             <h3 className="font-bold text-lg mb-1.5">Webs rápidas y modernas</h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              Landing pages, portfolios y webs corporativas ultra rápidas construidas con React, TypeScript y desplegadas en Cloudflare.
+              Desarrollo de interfaces modernas y accesibles con React, TypeScript, Vite y Tailwind CSS.
             </p>
           </div>
 
@@ -202,7 +286,7 @@ export default function App() {
             <Smartphone className="w-6 h-6 text-emerald-400 mb-3" />
             <h3 className="font-bold text-lg mb-1.5">Apps y herramientas a medida</h3>
             <p className="text-sm text-slate-300 leading-relaxed">
-              De la idea al producto publicado: aplicaciones web progresivas, apps Android con Capacitor y backends en Java/Spring Boot.
+              Proyectos personales de principio a fin: aplicaciones web progresivas, apps Android con Capacitor y backends en Java/Spring Boot.
             </p>
           </div>
         </div>
@@ -216,11 +300,15 @@ export default function App() {
           </div>
           <h2 className="text-2xl md:text-3xl font-bold">¿Tienes una idea o proyecto en mente?</h2>
           <p className="text-sm text-slate-300 mt-2 mb-6">
-            Escríbeme directamente a{" "}
+            Para propuestas profesionales, escríbeme a{" "}
             <a href="mailto:donsecanarias@gmail.com" className="text-sky-400 underline">
               donsecanarias@gmail.com
-            </a>{" "}
-            o rellena el formulario y te respondo lo antes posible.
+            </a>
+            . Para asuntos personales, puedes usar{" "}
+            <a href="mailto:abdoncale@gmail.com" className="text-sky-400 underline">
+              abdoncale@gmail.com
+            </a>
+            .
           </p>
 
           {sent ? (
@@ -284,6 +372,11 @@ export default function App() {
               >
                 {sending ? "Enviando..." : "Enviar mensaje a DonseCanarias"}
               </button>
+              {sendError && (
+                <p role="alert" className="text-sm text-rose-300">
+                  No se pudo enviar el mensaje. Escríbeme directamente por email e inténtalo de nuevo más tarde.
+                </p>
+              )}
             </form>
           )}
         </div>
@@ -292,9 +385,9 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-slate-800/80 py-8 text-center text-xs text-slate-400">
         <p className="font-semibold text-slate-300">
-          DonseCanarias · Hecho en Tenerife, Islas Canarias
+          Abdón Senen Melendez Díaz · Donse Canarias · Tenerife, Islas Canarias
         </p>
-        <p className="mt-1">donsecanarias@gmail.com · © {new Date().getFullYear()}</p>
+        <p className="mt-1">donsecanarias@gmail.com · © {CURRENT_YEAR}</p>
       </footer>
     </div>
   );

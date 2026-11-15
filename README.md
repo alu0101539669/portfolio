@@ -1,6 +1,8 @@
-# DonseCanarias — Portfolio & Laboratorio de Productos Digitales
+# Abdón Senen Melendez Díaz — Portfolio & Donse Canarias
 
-Web personal y escaparate de proyectos desarrollados en **Tenerife, Islas Canarias**, combinando desarrollo frontend moderno, arquitectura backend y despliegue en la nube.
+Perfil profesional público de Abdón Senen Melendez Díaz, estudiante de Ingeniería Informática en la Universidad de La Laguna y creador independiente en **Tenerife, Islas Canarias**.
+
+Abdón tiene 22 años y desarrolla proyectos personales relacionados con la informática, los videojuegos y la creatividad. Actualmente no cuenta con experiencia comercial: este portfolio presenta su formación, su stack y sus proyectos propios bajo la marca **Donse Canarias**.
 
 ## Proyectos Destacados
 
@@ -16,5 +18,12 @@ Web personal y escaparate de proyectos desarrollados en **Tenerife, Islas Canari
 
 ## Contacto
 
-- **Email:** donsecanarias@gmail.com
+- **Email profesional:** donsecanarias@gmail.com
+- **Email personal:** abdoncale@gmail.com
+- **GitHub:** https://github.com/alu0101539669
 - **Ubicación:** Tenerife, España
+
+## Formación
+
+- Grado en Ingeniería Informática — Universidad de La Laguna (en curso)
+- Bachillerato Científico-Tecnológico
